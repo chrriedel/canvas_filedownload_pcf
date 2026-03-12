@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="FileDownload" constructor="FileDownloadControl" version="0.0.1" display-name-key="FileDownloadControl" description-key="Downloads a base64-encoded file in the browser" control-type="standard">
+    <external-service-usage enabled="false">
+    </external-service-usage>
+    <property name="DownloadRequest" display-name-key="Download Request" description-key="JSON string with fileName, contentType, and content fields. Set this to trigger a download." of-type="Multiple" usage="input" required="false" />
+    <resources>
+      <code path="index.ts" order="1"/>
+    </resources>
+  </control>
+</manifest>
