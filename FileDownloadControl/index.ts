@@ -48,7 +48,19 @@ export class FileDownloadControl implements ComponentFramework.StandardControl<I
   }
 
   private downloadFile(base64Content: string, contentType: string, fileName: string): void {
-    const byteCharacters = atob(base64Content);
+    // Strip a data-URL prefix if present (e.g. "data:application/pdf;base64,...")
+    const base64Data = /^data:[^;]*;base64,/i.test(base64Content)
+      ? base64Content.replace(/^data:[^;]*;base64,/i, "")
+      : base64Content;
+
+    let byteCharacters: string;
+    try {
+      byteCharacters = atob(base64Data);
+    } catch (e) {
+      console.error("FileDownloadControl: failed to decode base64 content", e);
+      return;
+    }
+
     const byteNumbers = new Uint8Array(byteCharacters.length);
     for (let i = 0; i < byteCharacters.length; i++) {
       byteNumbers[i] = byteCharacters.charCodeAt(i);
