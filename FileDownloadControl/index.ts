@@ -64,8 +64,12 @@ export class FileDownloadControl implements ComponentFramework.StandardControl<I
     document.body.appendChild(link);
     link.click();
 
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    window.setTimeout(() => {
+      if (link.parentNode) {
+        document.body.removeChild(link);
+      }
+      URL.revokeObjectURL(url);
+    }, 100);
   }
 
   public getOutputs(): IOutputs {
