@@ -48,8 +48,8 @@ export class FileDownloadControl implements ComponentFramework.StandardControl<I
   }
 
   private downloadFile(base64Content: string, contentType: string, fileName: string): void {
-    // Strip a potential data-URL prefix (e.g. "data:application/pdf;base64,...")
-    const dataUrlMatch = base64Content.match(/^data:[^;]+;base64,(.+)$/s);
+    // Strip a potential data-URL prefix (e.g. "data:application/pdf;base64,..." or with parameters like "data:application/pdf;charset=utf-8;base64,...")
+    const dataUrlMatch = base64Content.match(/^data:[^;]+(?:;[^;,]+)*;base64,(.+)$/s);
     const base64Data = dataUrlMatch ? dataUrlMatch[1] : base64Content;
 
     let byteNumbers: Uint8Array;
