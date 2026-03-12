@@ -3,6 +3,8 @@ import microsoftPowerApps from "@microsoft/eslint-plugin-power-apps";
 import pluginPromise from "eslint-plugin-promise";
 import globals from "globals";
 import typescriptEslint from "typescript-eslint";
+import { fileURLToPath } from "url";
+import path from "path";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -28,7 +30,7 @@ export default [
         ecmaVersion: 2020,
         sourceType: "module",
         projectService: true,
-        tsconfigRootDir: import.meta.dirname,
+        tsconfigRootDir: path.dirname(fileURLToPath(import.meta.url)),
       },
     },
 
