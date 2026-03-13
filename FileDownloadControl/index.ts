@@ -29,6 +29,12 @@ export class FileDownloadControl implements ComponentFramework.StandardControl<I
   public updateView(context: ComponentFramework.Context<IInputs>): void {
     const trigger = context.parameters.TriggerDownload?.raw;
 
+    // On first render or when trigger is null/undefined, treat the current value as baseline
+    if (this._lastTrigger === null || trigger == null) {
+      this._lastTrigger = trigger ?? null;
+      return;
+    }
+
     // Only act when the boolean value actually changes
     if (trigger === this._lastTrigger) {
       return;
