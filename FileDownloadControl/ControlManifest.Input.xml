@@ -3,7 +3,10 @@
   <control namespace="FileDownload" constructor="FileDownloadControl" version="0.0.1" display-name-key="FileDownloadControl" description-key="Downloads a base64-encoded file in the browser" control-type="standard">
     <external-service-usage enabled="false">
     </external-service-usage>
-    <property name="DownloadRequest" display-name-key="Download Request" description-key="JSON string with fileName, contentType, and content fields. Set this to trigger a download." of-type="Multiple" usage="input" required="false" />
+    <property name="FileName" display-name-key="File Name" description-key="The name of the file to download." of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="FileContent" display-name-key="File Content" description-key="File content record as JSON: {$content-type, $content}" of-type="Multiple" usage="input" required="false" />
+    <property name="TriggerDownload" display-name-key="Trigger Download" description-key="Toggle this boolean to trigger the file download." of-type="TwoOptions" usage="input" required="false" />
+    <property name="Error" display-name-key="Error" description-key="Error message if the download failed. Empty on success." of-type="SingleLine.Text" usage="output" />
     <resources>
       <code path="index.ts" order="1"/>
     </resources>
