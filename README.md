@@ -12,7 +12,7 @@ The control exposes three input properties:
 
 ### `FileName` _(SingleLine.Text)_
 
-The name for the downloaded file (e.g. `"report.pdf"`). Defaults to `"download"` if empty.
+The name for the downloaded file (e.g. `"report.pdf"`). This value must not be empty; otherwise the control returns the `FileName is empty.` error.
 
 ### `FileContent` _(Multiple / Text)_
 
