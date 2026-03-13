@@ -38,7 +38,7 @@ In Power Apps, pass this using `JSON(yourVariable.filecontent)` — the componen
 
 Toggle this boolean to trigger the download. The control fires a download each time the value changes (e.g. from `false` to `true` or vice versa).
 
-The control only downloads when both `$content-type` and `$content` are present in the `FileContent` JSON. Invalid JSON is silently ignored.
+The control only downloads when both `$content-type` and `$content` are present in the `FileContent` JSON. If the `FileContent` value is not valid JSON, the control does not download and instead sets the `Error` output to `FileContent is not valid JSON.`.
 
 ## Output Properties
 
